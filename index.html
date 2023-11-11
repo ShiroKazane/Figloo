@@ -103,7 +103,7 @@
                 margin: 0 auto;
             }
             footer p {
-                color: rgba(238, 238, 238, 0.8);
+                color: rgba(238, 238, 238, 0.4);
                 position: relative;
             }
             footer a {
@@ -112,6 +112,9 @@
             }
             footer a:hover {
                 color: #EEE;
+            }
+            .essential {
+                color: rgba(238, 238, 238, 0.2);
             }
             .material-symbols-outlined {
                 top: 3px;
@@ -147,14 +150,14 @@
             <div>
                 <img src="./assets/figloo.webp" alt="Figloo" loading="eager" draggable="false" />
                 <p class="head"><strong>@Figloo</strong></p>
-                <p>Link blog-blog dari anak Axioo kelas 12.</p>
+                <p>Blog karya XII TKJ Axioo.</p>
             </div>
             <div class="links-section"></div>
         </section>
         <footer>
             <div>
                 <p>
-                    <a href="https://instagram.com/figloo.5">Figloo</a> | Made with <span class="material-symbols-outlined">favorite</span> by <a href="https://instagram.com/iqbal.bayu_">IqbalBayu</a>.
+                    <a href="https://instagram.com/figloo.5">Figloo</a> <span class="essential">|</span> Made with <span class="material-symbols-outlined">favorite</span> by <a href="https://instagram.com/iqbal.bayu_">IqbalBayu</a>.
                 </p>
             </div>
         </footer>
@@ -165,23 +168,23 @@
                 .then((response) => response.json())
                 .then((data) => {
                     data.forEach((user) => {
-                    const disabledClass = user.url === "" ? "disabled" : user.url;
+                        const disabledClass = user.url === "" ? "disabled" : user.url;
 
-                    const subSec = document.createElement("div");
-                    subSec.classList.add("sub-sec");
+                        const subSec = document.createElement("div");
+                        subSec.classList.add("sub-sec");
 
-                    const link = document.createElement("a");
-                    link.setAttribute("target", "_blank");
-                    link.setAttribute("href", user.url);
-                    link.classList.add(disabledClass);
+                        const link = document.createElement("a");
+                        link.setAttribute("target", "_blank");
+                        link.setAttribute("href", user.url);
+                        link.classList.add(disabledClass);
 
-                    const innerLink = document.createElement("div");
-                    innerLink.classList.add("inner-link");
-                    innerLink.textContent = user.name;
+                        const innerLink = document.createElement("div");
+                        innerLink.classList.add("inner-link");
+                        innerLink.textContent = user.name;
 
-                    link.appendChild(innerLink);
-                    subSec.appendChild(link);
-                    linksSection.appendChild(subSec);
+                        link.appendChild(innerLink);
+                        subSec.appendChild(link);
+                        linksSection.appendChild(subSec);
                     });
                 })
                 .catch((error) => {
