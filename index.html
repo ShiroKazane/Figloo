@@ -10,12 +10,17 @@
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
             body {
-                -ms-overflow-style: none;
-                scrollbar-width: none;
                 font-family: 'Poppins', sans-serif;
                 background-color: #242424;
                 margin: 25px;
                 padding: 0;
+                user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                -khtml-user-select: none;
+                -webkit-user-select: none;
+                -ms-overflow-style: none;
+                scrollbar-width: none;
             }
             body::-webkit-scrollbar {
                 display: none;
@@ -46,10 +51,9 @@
             }
             section {
                 width: 100%;
-                margin: auto;
-                text-align: center;
-                margin-top: 30px auto;
+                margin-top: 30px;
                 padding: 0;
+                text-align: center;
             }
             .inner-link {
                 background-color: #EEE;
@@ -73,6 +77,31 @@
             .sub-sec {
                 margin: 10px 0px;
             }
+            footer {
+                bottom: 0;
+                width: 100%;
+                text-align: center;
+                margin-top: 20px;
+            }
+            footer::before {
+                content: '';
+                display: block;
+                width: 384px;
+                border-top: 1px solid rgba(238, 238, 238, 0.1);
+                margin: 0 auto;
+            }
+            footer p {
+                color: rgba(238, 238, 238, 0.4);
+                position: relative;
+            }
+            footer a {
+                color: rgba(238, 238, 238, 0.7);
+                text-decoration: none;
+            }
+
+            footer a:hover {
+                color: #EEE;
+            }
             @media screen and (max-width: 720px) {
                 section {
                     width: 100%;
@@ -83,6 +112,9 @@
                     overflow: hidden;
                     text-overflow: ellipsis;
                     padding: 15px;
+                    width: 384px;
+                }
+                footer::before {
                     width: 256px;
                 }
             }
@@ -262,5 +294,12 @@
                 </div>
             </div>
         </section>
+        <footer>
+            <div>
+                <p>
+                    <a href="https://instagram.com/figloo.5">Figloo</a> | Made with ❤︎ by <a href="https://instagram.com/iqbal.bayu_">IqbalBayu</a>
+                </p>
+            </div>
+        </footer>
     </body>
 </html>
