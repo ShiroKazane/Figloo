@@ -15,7 +15,7 @@
                 margin: 25px;
                 padding: 0;
                 font-size: 16px;
-                outline: none;
+                text-overflow: ellipsis;
                 user-select: none;
                 -moz-user-select: none;
                 -ms-user-select: none;
@@ -58,12 +58,15 @@
                 text-align: center;
             }
             .inner-link {
-                background-color: #EEE;
+                width: 512px;
                 padding: 20px;
-                transition: 0.1s ease-in;
+                background-color: #EEE;
                 border: 2px solid #EEE;
                 border-radius: 14px;
-                width: 512px;
+                transition: 0.1s ease-in;
+                outline: none;
+                white-space: nowrap;
+                overflow: hidden;
             }
             .inner-link:hover {
                 background-color: transparent;
@@ -105,14 +108,17 @@
                 color: #EEE;
             }
             @media screen and (max-width: 720px) {
+                body {
+                    font-size: 14px;
+                }
                 section {
                     width: 100%;
                     padding: 0 10px;
                 }
+                .head {
+                    font-size: 16px
+                }
                 .inner-link {
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
                     padding: 15px;
                     width: 256px;
                 }
@@ -126,7 +132,7 @@
         <section>
             <!-- Intro Block -->
             <div>
-                <img src="./assets/figloo.jpg" alt="Figloo" draggable="false" />
+                <img src="./assets/figloo.webp" alt="Figloo" draggable="false" />
                 <p class="head"><strong>@Figloo</strong></p>
                 <p class="sub-head">
                     Link blog-blog dari anak Axioo kelas 12.
