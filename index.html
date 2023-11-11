@@ -325,25 +325,29 @@
             fetch("assets/data.json")
             .then((response) => response.json())
             .then((data) => {
-                data.forEach((user) => {
-                const disabledClass = user.url === "" ? "disabled" : "";
+                if (Array.isArray(data) && data.length > 0) {
+                    data.forEach((user) => {
+                    const disabledClass = user.url === "" ? "disabled" : "";
 
-                const subSec = document.createElement("div");
-                subSec.classList.add("sub-sec");
+                    const subSec = document.createElement("div");
+                    subSec.classList.add("sub-sec");
 
-                const link = document.createElement("a");
-                link.setAttribute("target", "_blank");
-                link.setAttribute("href", user.url);
-                link.classList.add(disabledClass);
+                    const link = document.createElement("a");
+                    link.setAttribute("target", "_blank");
+                    link.setAttribute("href", user.url);
+                    link.classList.add(disabledClass);
 
-                const innerLink = document.createElement("div");
-                innerLink.classList.add("inner-link");
-                innerLink.textContent = user.name;
+                    const innerLink = document.createElement("div");
+                    innerLink.classList.add("inner-link");
+                    innerLink.textContent = user.name;
 
-                link.appendChild(innerLink);
-                subSec.appendChild(link);
-                linksSection.appendChild(subSec);
-                });
+                    link.appendChild(innerLink);
+                    subSec.appendChild(link);
+                    linksSection.appendChild(subSec);
+                    });
+                } else {
+                    console.warn("JSON data is empty or not an array.");
+                }
             })
             .catch((error) => {
                 console.error("Error loading user data:", error);
