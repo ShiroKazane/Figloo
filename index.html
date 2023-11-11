@@ -7,6 +7,86 @@
         <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
         <title>Figloo's Blog</title>
         <link rel="stylesheet" href="style.css" />
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+            body {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+                font-family: 'Poppins', sans-serif;
+                background-color: #242424;
+                margin: 25px;
+                padding: 0;
+            }
+            body::-webkit-scrollbar {
+                display: none;
+            }
+            img {
+                width: 96px;
+                height: 96px;
+                border-radius: 50%;
+            }
+            p {
+                color: #EEE;
+            }
+            a {
+                color: #242424;
+                text-decoration: none;
+            }
+            a:hover {
+                color: #EEE;
+            }
+            a.disabled {
+                pointer-events: none;
+                cursor: default;
+            }
+            a.disabled .inner-link {
+                color: rgba(238, 238, 238, 0.5);
+                background-color: rgba(238, 238, 238, 0.1);
+                border: none;
+            }
+            section {
+                width: 100%;
+                margin: auto;
+                text-align: center;
+                margin-top: 30px auto;
+                padding: 0;
+            }
+            .inner-link {
+                background-color: #EEE;
+                padding: 20px;
+                transition: 0.1s ease-in;
+                border: 2px solid #EEE;
+                border-radius: 14px;
+                width: 512px;
+            }
+            .inner-link:hover {
+                background-color: transparent;
+            }
+            .sub-head {
+                font-size: 13px;
+            }
+            .links-section {
+                display: grid;
+                justify-content: center;
+                margin-top: 30px;
+            }
+            .sub-sec {
+                margin: 10px 0px;
+            }
+            @media screen and (max-width: 720px) {
+                section {
+                    width: 100%;
+                    padding: 0 10px;
+                }
+                .inner-link {
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    padding: 15px;
+                    width: 256px;
+                }
+            }
+        </style>
     </head>
     <body>
         <section>
