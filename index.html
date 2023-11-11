@@ -148,7 +148,7 @@
             </div>
             <!-- Links Block -->
             <div class="links-section">
-                <div class="sub-sec">
+                <!-- <div class="sub-sec">
                     <a target="_blank" href="https://link" class="disabled">
                         <div class="inner-link">Ahmad Baihaqi Idris</div>
                     </a>
@@ -307,7 +307,7 @@
                     <a target="_blank" href="https://cukurupukjeru.000webhostapp.com">
                         <div class="inner-link">Yahya Firmansyah</div>
                     </a>
-                </div>
+                </div> -->
             </div>
         </section>
         <footer>
@@ -318,4 +318,38 @@
             </div>
         </footer>
     </body>
+    <script>
+        function loadUserLinks() {
+            const linksSection = document.getElementById("links-section");
+
+            fetch("assets/data.json")
+            .then((response) => response.json())
+            .then((data) => {
+                data.forEach((user) => {
+                const disabledClass = user.url === "" ? "disabled" : "";
+
+                const subSec = document.createElement("div");
+                subSec.classList.add("sub-sec");
+
+                const link = document.createElement("a");
+                link.setAttribute("target", "_blank");
+                link.setAttribute("href", user.url);
+                link.classList.add(disabledClass);
+
+                const innerLink = document.createElement("div");
+                innerLink.classList.add("inner-link");
+                innerLink.textContent = user.name;
+
+                link.appendChild(innerLink);
+                subSec.appendChild(link);
+                linksSection.appendChild(subSec);
+                });
+            })
+            .catch((error) => {
+                console.error("Error loading user data:", error);
+            });
+        }
+
+        loadUserLinks();
+    </script>
 </html>
