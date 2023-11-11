@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap');
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Fira Mono', monospace;
     background-color: #242424;
     -ms-overflow-style: none;
     scrollbar-width: none;
