@@ -320,7 +320,7 @@
     </body>
     <script>
         function loadUserLinks() {
-            const linksSection = document.getElementById("links-section");
+            const linksSection = document.getElementsByClassName("links-section");
 
             fetch("assets/data.json")
             .then((response) => response.json())
