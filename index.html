@@ -155,37 +155,37 @@
                 </p>
             </div>
         </footer>
-    </body>
-    <script>
-        function loadUserLinks() {
-            const linksSection = document.querySelector(".links-section");
-            fetch("assets/data.json")
-            .then((response) => response.json())
-            .then((data) => {
-                data.forEach((user) => {
-                const disabledClass = user.url === "" ? "disabled" : user.url;
+        <script defer>
+            function loadUserLinks() {
+                const linksSection = document.querySelector(".links-section");
+                fetch("assets/data.json")
+                .then((response) => response.json())
+                .then((data) => {
+                    data.forEach((user) => {
+                    const disabledClass = user.url === "" ? "disabled" : user.url;
 
-                const subSec = document.createElement("div");
-                subSec.classList.add("sub-sec");
+                    const subSec = document.createElement("div");
+                    subSec.classList.add("sub-sec");
 
-                const link = document.createElement("a");
-                link.setAttribute("target", "_blank");
-                link.setAttribute("href", user.url);
-                link.classList.add(disabledClass);
+                    const link = document.createElement("a");
+                    link.setAttribute("target", "_blank");
+                    link.setAttribute("href", user.url);
+                    link.classList.add(disabledClass);
 
-                const innerLink = document.createElement("div");
-                innerLink.classList.add("inner-link");
-                innerLink.textContent = user.name;
+                    const innerLink = document.createElement("div");
+                    innerLink.classList.add("inner-link");
+                    innerLink.textContent = user.name;
 
-                link.appendChild(innerLink);
-                subSec.appendChild(link);
-                linksSection.appendChild(subSec);
+                    link.appendChild(innerLink);
+                    subSec.appendChild(link);
+                    linksSection.appendChild(subSec);
+                    });
+                })
+                .catch((error) => {
+                    console.error("Error loading user data:", error);
                 });
-            })
-            .catch((error) => {
-                console.error("Error loading user data:", error);
-            });
-        }
-        loadUserLinks();
-    </script>
+            }
+            loadUserLinks();
+        </script>
+    </body>
 </html>
