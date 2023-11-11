@@ -4,6 +4,7 @@ body {
     background-color: #242424;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    margin: 25px;
 }
 body::-webkit-scrollbar {
     display: none;
