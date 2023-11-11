@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #242424;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    font-family: 'Poppins', sans-serif;
+    background-color: #242424;
     margin: 25px;
+    padding: 0;
 }
 body::-webkit-scrollbar {
     display: none;
@@ -34,10 +35,11 @@ a.disabled .inner-link {
     border: none;
 }
 section {
-    width: 50%;
+    width: 100%;
     margin: auto;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 30px auto;
+    padding: 0;
 }
 .inner-link {
     background-color: #EEE;
@@ -46,7 +48,6 @@ section {
     border: 2px solid #EEE;
     border-radius: 14px;
     width: 512px;
-    max-width: 512px;
 }
 .inner-link:hover {
     background-color: transparent;
@@ -65,5 +66,13 @@ section {
 @media screen and (max-width: 720px) {
     section {
         width: 100%;
+        padding: 0 10px;
+    }
+    .inner-link {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 15px;
+        width: 256px;
     }
 }
