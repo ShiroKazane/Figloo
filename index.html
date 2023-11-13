@@ -148,7 +148,7 @@
     <body oncontextmenu="return false;">
         <section>
             <div>
-                <img src="./assets/figloo.webp" alt="Figloo" loading="eager" draggable="false" />
+                <img src="./assets/figloo.webp" alt="Figloo" draggable="false" />
                 <p class="head"><strong>@Figloo</strong></p>
                 <p>Blog karya XII TKJ Axioo.</p>
             </div>
@@ -169,19 +169,19 @@
                 .then((data) => {
                     data.forEach((user) => {
                         const disabledClass = user.url === "" ? "disabled" : user.url;
-
+                        // sub-sec
                         const subSec = document.createElement("div");
                         subSec.classList.add("sub-sec");
-
+                        // link
                         const link = document.createElement("a");
                         link.setAttribute("target", "_blank");
                         link.setAttribute("href", user.url);
                         link.classList.add(disabledClass);
-
+                        // inner-link
                         const innerLink = document.createElement("div");
                         innerLink.classList.add("inner-link");
                         innerLink.textContent = user.name;
-
+                        // appendChild
                         link.appendChild(innerLink);
                         subSec.appendChild(link);
                         linksSection.appendChild(subSec);
