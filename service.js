@@ -24,7 +24,7 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
     console.log(`Service worker: Fetching: ${event.request.url}`);
     event
-        .respondWith(fetch('https://figloo.iqbalbayu.my.id/'))
+        .respondWith(fetch(event.request))
         .then((res) => {
             const resClone = res.clone();
             caches.open(CACHE_NAME).then((cache) => {
