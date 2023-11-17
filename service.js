@@ -5,7 +5,7 @@ const URL = [
     '/service.js',
     '/assets/data.json',
     '/assets/favicon.ico'
-]
+];
 
 self.addEventListener('install', (event) => {
     console.log('Service worker: Installed.');
