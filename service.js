@@ -36,10 +36,12 @@ self.addEventListener('fetch', (event) => {
                         CACHED = true;
                     }
                     if (CACHED) {
-                        window.setTimeout(() => {
-                            const loader = document.querySelector('.preloader');
-                            loader.classList.add('hide');
-                        }, 1000);
+                        window.onload(() => {
+                            window.setTimeout(() => {
+                                const loader = document.querySelector('.preloader');
+                                loader.classList.add('hide');
+                            }, 1000);
+                        })
                     }
                 });
                 return res.clone();
