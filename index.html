@@ -152,68 +152,51 @@
                 align-items: center;
                 z-index: 98;
             }
-            .loader {
-                width: 160px;
-                height: 185px;
-                position: relative;
-                background: #fff;
-                border-radius: 100px 100px 0 0;
-                z-index: 99;
-            }
-            .loader:after {
-                content: "";
-                position: absolute;
-                width: 100px;
-                height: 125px;
-                left: 50%;
-                top: 25px;
-                transform: translateX(-50%);
-                background-image: radial-gradient(circle, #000 48%, transparent 55%),
-                    radial-gradient(circle, #000 48%, transparent 55%),
-                    radial-gradient(circle, #fff 30%, transparent 45%),
-                    radial-gradient(circle, #000 48%, transparent 51%),
-                    linear-gradient(#000 20px, transparent 0),
-                    linear-gradient(#cfecf9 60px, transparent 0),
-                    radial-gradient(circle, #cfecf9 50%, transparent 51%),
-                    radial-gradient(circle, #cfecf9 50%, transparent 51%);
-                background-repeat: no-repeat;
-                background-size: 16px 16px, 16px 16px, 10px 10px, 42px 42px, 12px 3px,
-                    50px 25px, 70px 70px, 70px 70px;
-                background-position: 25px 10px, 55px 10px, 36px 44px, 50% 30px, 50% 85px,
-                    50% 50px, 50% 22px, 50% 45px;
-                animation: faceLift 3s linear infinite alternate;
-            }
-            .loader:before {
-                content: "";
-                position: absolute;
-                width: 140%;
-                height: 125px;
-                left: -20%;
-                top: 0;
-                background-image: radial-gradient(circle, #fff 48%, transparent 50%),
-                    radial-gradient(circle, #fff 48%, transparent 50%);
-                background-repeat: no-repeat;
-                background-size: 65px 65px;
-                background-position: 0px 12px, 145px 12px;
-                animation: earLift 3s linear infinite alternate;
-            }
             .hide {
                 display: none;
             }
-            @keyframes faceLift {
-                0% {
-                    transform: translateX(-60%);
-                }
-                100% {
-                    transform: translateX(-30%);
-                }
+            .loader {
+                width: 48px;
+                height: 40px;
+                margin-top: 30px;
+                display: inline-block;
+                position: relative;
+                background: #FFF;
+                border-radius: 15% 15% 35% 35%;
+                z-index: 99;
             }
-            @keyframes earLift {
+            .loader::after {
+                content: '';  
+                box-sizing: border-box;
+                position: absolute;
+                left: 45px;
+                top: 8px;
+                border: 4px solid #FFF;
+                width: 16px;
+                height: 20px;
+                border-radius: 0 4px 4px 0;
+            }
+            .loader::before {
+                content: '';  
+                position: absolute;
+                width: 1px;
+                height: 10px;
+                color: #FFF;
+                top: -15px;
+                left: 11px;
+                box-sizing: border-box;
+                animation: animloader 1s ease infinite;
+            }
+
+            @keyframes animloader {
                 0% {
-                    transform: translateX(10px);
+                    box-shadow: 2px 0px rgba(255, 255, 255, 0), 12px 0px rgba(255, 255, 255, 0.3), 20px 0px rgba(255, 255, 255, 0);
+                }
+                50% {
+                    box-shadow: 2px -5px rgba(255, 255, 255, 0.5), 12px -3px rgba(255, 255, 255, 0.5), 20px -2px rgba(255, 255, 255, 0.6);
                 }
                 100% {
-                    transform: translateX(0px);
+                    box-shadow: 2px -8px rgba(255, 255, 255, 0), 12px -5px rgba(255, 255, 255, 0), 20px -5px rgba(255, 255, 255, 0);
                 }
             }
             @media screen and (max-width: 720px) {
