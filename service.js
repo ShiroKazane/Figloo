@@ -36,9 +36,8 @@ self.addEventListener('fetch', (event) => {
                         CACHED = true;
                     }
                     if (CACHED) {
-                        setTimeout(() => {
-                            const loader = document.querySelector('.load');
-                            loader.classList.add('hide');
+                        window.setTimeout(() => {
+                            document.querySelector('.preloader').style.display = 'none';
                         }, 1000);
                     }
                 });

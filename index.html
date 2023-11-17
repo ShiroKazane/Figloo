@@ -140,7 +140,7 @@
                 font-size: 16px;
                 position: relative;
             }
-            .load {
+            .preloader {
                 position: fixed;
                 top: 0;
                 left: 0;
@@ -197,9 +197,6 @@
                 background-position: 0px 12px, 145px 12px;
                 animation: earLift 3s linear infinite alternate;
             }
-            .hide {
-                display: none;
-            }
             @keyframes faceLift {
                 0% {
                     transform: translateX(-60%);
@@ -241,7 +238,7 @@
         </style>
     </head>
     <body oncontextmenu="return false;">
-        <div class="load">
+        <div class="preloader">
             <span class="loader"></span>
         </div>
         <section>
@@ -266,8 +263,7 @@
             const param = new URLSearchParams(window.location.search);
             const LOAD_FLAG = param.get('c');
             if (!LOAD_FLAG) {
-                const loader = document.querySelector('.load');
-                loader.classList.add('hide');
+                document.querySelector('.preloader').style.display = 'none';
             }
             const linksSection = document.querySelector(".links");
             fetch("assets/data.json")
