@@ -162,6 +162,8 @@
             </div>
         </footer>
         <script defer>
+            const log = console.log;
+            console.log = function() {};
             if (navigator.onLine) {
                 if ('serviceWorker' in navigator) {
                     navigator.serviceWorker.register('/service.js');
@@ -192,9 +194,11 @@
                         subSec.appendChild(link);
                         linksSection.appendChild(subSec);
                     });
+                    console.log(data)
                 });
             }
             loadUserLinks();
+            console.log = log;
         </script>
     </body>
 </html>
