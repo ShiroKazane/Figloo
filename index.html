@@ -241,17 +241,16 @@
             </div>
         </footer>
         <script defer>
+            window.onload = () => {
+                window.setTimeout(() => {
+                    const loader = document.querySelector('.preloader');
+                    loader.classList.add('hide');
+                }, 500);
+            }
             if (navigator.onLine) {
                 if ('serviceWorker' in navigator) {
                     navigator.serviceWorker.register('/service.js');
                 }
-            }
-            window.onload = () => {
-                window.setTimeout(() => {
-                    console.log('using LOAD_FLAG')
-                    const loader = document.querySelector('.preloader');
-                    loader.classList.add('hide');
-                }, 500);
             }
             const linksSection = document.querySelector(".links");
             fetch("assets/data.json")
