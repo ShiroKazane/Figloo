@@ -252,7 +252,7 @@
                     navigator.serviceWorker.register('/service.js');
                 }
             }
-            const linksSection = document.querySelector(".links");
+            const links = document.querySelector(".links");
             fetch("assets/data.json")
             .then((response) => response.json())
             .then((data) => {
@@ -273,7 +273,7 @@
                     
                     link.appendChild(innerLink);
                     subSec.appendChild(link);
-                    linksSection.appendChild(subSec);
+                    links.appendChild(subSec);
                 });
             })
         </script>
