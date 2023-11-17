@@ -162,8 +162,6 @@
             </div>
         </footer>
         <script defer>
-            const log = console.log;
-            console.log = function() {};
             if (navigator.onLine) {
                 if ('serviceWorker' in navigator) {
                     navigator.serviceWorker.register('/service.js');
@@ -171,6 +169,8 @@
             }
 
             function loadUserLinks() {
+                const log = console.log;
+                console.log = function() {};
                 const linksSection = document.querySelector(".links-section");
                 fetch("assets/data.json")
                 .then((response) => response.json())
@@ -196,9 +196,9 @@
                     });
                     console.log(data)
                 });
+                console.log = log;
             }
             loadUserLinks();
-            console.log = log;
         </script>
     </body>
 </html>
