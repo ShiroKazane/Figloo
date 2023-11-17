@@ -19,7 +19,7 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
     const log = console.log;
-    console.log = function () {};
+    console.log = function() {};
     event.respondWith(fetch(event.request).then((res) => {
         const resClone = res.clone();
         caches.open(CACHE_NAME).then((cache) => {
