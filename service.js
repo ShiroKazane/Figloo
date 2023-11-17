@@ -30,16 +30,14 @@ self.addEventListener('fetch', (event) => {
             caches.open(CACHE_NAME).then((cache) => {
                 cache.put(requestFlagged, res);
                 if (res.status === 200 && flagged) {
-                    window.addEventListener('load', () => {
-                        setTimeout(() => {
-                            console.log('NOT SURE');
-                            const loader = document.querySelector('.preloader');
-                            loader.classList.add('hide');
-                        }, 500);
+                    clients.matchAll().then((clients) => {
+                        clients.forEach((client) => {
+                            client.postMessage({ action: 'hide' });
+                        });
                     });
                 }
+                return res.clone();
             });
-            return res.clone();
         });
     }));
 });
