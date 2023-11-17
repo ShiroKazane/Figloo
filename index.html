@@ -162,44 +162,42 @@
             </div>
         </footer>
         <script defer>
+            const log = console.log;
+            console.log = function() {};
+
             if (navigator.onLine) {
                 if ('serviceWorker' in navigator) {
                     navigator.serviceWorker.register('/service.js');
                 }
             }
 
-            function loadUserLinks() {
-                const log = console.log;
-                console.log = function() {};
-                const linksSection = document.querySelector(".links-section");
-                fetch("assets/data.json")
-                .then((response) => response.json())
-                .then((data) => {
-                    data.forEach((user) => {
-                        const disabledClass = user.url === "" ? "disabled" : user.url;
-                        // sub-sec
-                        const subSec = document.createElement("div");
-                        subSec.classList.add("sub-sec");
-                        // link
-                        const link = document.createElement("a");
-                        link.setAttribute("target", "_blank");
-                        link.setAttribute("href", user.url);
-                        link.classList.add(disabledClass);
-                        // inner-link
-                        const innerLink = document.createElement("div");
-                        innerLink.classList.add("inner-link");
-                        innerLink.textContent = user.name;
-                        // appendChild
-                        link.appendChild(innerLink);
-                        subSec.appendChild(link);
-                        linksSection.appendChild(subSec);
-                    });
-                    console.log(data);
-                }).finally(() => {
-                    console.log = log;
+            const linksSection = document.querySelector(".links-section");
+            fetch("assets/data.json")
+            .then((response) => response.json())
+            .then((data) => {
+                data.forEach((user) => {
+                    const disabledClass = user.url === "" ? "disabled" : user.url;
+                    // sub-sec
+                    const subSec = document.createElement("div");
+                    subSec.classList.add("sub-sec");
+                    // link
+                    const link = document.createElement("a");
+                    link.setAttribute("target", "_blank");
+                    link.setAttribute("href", user.url);
+                    link.classList.add(disabledClass);
+                    // inner-link
+                    const innerLink = document.createElement("div");
+                    innerLink.classList.add("inner-link");
+                    innerLink.textContent = user.name;
+                    // appendChild
+                    link.appendChild(innerLink);
+                    subSec.appendChild(link);
+                    linksSection.appendChild(subSec);
                 });
-            }
-            loadUserLinks();
+                console.log(data);
+            })
+            
+            console.log = log;
         </script>
     </body>
 </html>
