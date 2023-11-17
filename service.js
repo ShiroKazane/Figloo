@@ -18,11 +18,14 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+    const log = console.log;
+    console.log = function () {};
     event.respondWith(fetch(event.request).then((res) => {
         const resClone = res.clone();
         caches.open(CACHE_NAME).then((cache) => {
             cache.put(event.request, resClone);
         });
         return res;
-    }).catch(() => caches.match(event.request).then((res) => res)));
+    }).then(data => console.log(data)).catch(() => caches.match(event.request).then((res) => res)));
+    console.log = log;
 });
