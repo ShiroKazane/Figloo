@@ -1,9 +1,16 @@
 const CACHE_NAME = 'cache-v2';
+const URL = [
+    '/',
+    '/index.html',
+    '/service.js',
+    '/assets/data.json',
+    '/assets/favicon.ico'
+]
 
 self.addEventListener('install', (event) => {
     console.log('Service worker: Installed.');
     event.waitUntil(caches.open(CACHE_NAME).then((cache) => {
-        return cache.addAll(urlsToCache);
+        return cache.addAll(URL);
     }));
     self.skipWaiting();
 });
