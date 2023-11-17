@@ -20,9 +20,9 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
     event.respondWith(caches.match(event.request).then((cachedRes) => {
-        if (cachedRes) {
-            return cachedRes;
-        }
+        // if (cachedRes) {
+        //     return cachedRes;
+        // }
         const flagged = !event.request.url.includes(`${LOAD_FLAG}=1`);
         const requestFlagged = flagged ? new Request(`${event.request.url}?${LOAD_FLAG}=1`, event.request) : event.request;
         console.log(requestFlagged);
