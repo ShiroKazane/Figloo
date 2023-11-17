@@ -37,12 +37,12 @@ self.addEventListener('fetch', (event) => {
                         console.log('CACHED');
                     }
                     if (CACHED) {
-                        window.onload(() => {
+                        window.onload = () => {
                             window.setTimeout(() => {
                                 const loader = document.querySelector('.preloader');
                                 loader.classList.add('hide');
                             }, 1000);
-                        })
+                        }
                     }
                 });
                 return res.clone();
