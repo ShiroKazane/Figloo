@@ -241,33 +241,18 @@
             </div>
         </footer>
         <script defer>
-            const ch = new BroadcastChannel('service');
-            ch.addEventListener('message', (event) => {
-                if (event.data.action === 'hide') {
-                    window.addEventListener('load', () => {
-                        setTimeout(() => {
-                            const loader = document.querySelector('.preloader');
-                            loader.classList.add('hide');
-                        }, 500);
-                    });
-                }
-            })
             if (navigator.onLine) {
                 if ('serviceWorker' in navigator) {
                     navigator.serviceWorker.register('/service.js');
                 }
             }
-            // const param = new URLSearchParams(window.location.search);
-            // const LOAD_FLAG = param.get('c');
-            // if (!LOAD_FLAG) {
-            //     window.onload = () => {
-            //         window.setTimeout(() => {
-            //             console.log('using LOAD_FLAG')
-            //             const loader = document.querySelector('.preloader');
-            //             loader.classList.add('hide');
-            //         }, 500);
-            //     }
-            // }
+            window.onload = () => {
+                window.setTimeout(() => {
+                    console.log('using LOAD_FLAG')
+                    const loader = document.querySelector('.preloader');
+                    loader.classList.add('hide');
+                }, 500);
+            }
             const linksSection = document.querySelector(".links");
             fetch("assets/data.json")
             .then((response) => response.json())
