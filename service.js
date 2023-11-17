@@ -1,6 +1,5 @@
 const CACHE_NAME = 'cache-v2';
 const LOAD_FLAG = 'c';
-const CACHED = false;
 
 self.addEventListener('install', () => {
     self.skipWaiting();
@@ -24,30 +23,21 @@ self.addEventListener('fetch', (event) => {
         if (cachedRes) {
             return cachedRes;
         }
-        if (!event.request.url.includes(LOAD_FLAG)) {
-            const requestFlagged = new Request(
-                event.request.url + `?${LOAD_FLAG}=1`,
-                event.request
-            );
-            return fetch(requestFlagged).then((res) => {
-                caches.open(CACHE_NAME).then((cache) => {
-                    cache.put(requestFlagged, res);
-                    if (res.status === 200) {
-                        CACHED = true;
-                        console.log('CACHED');
-                    }
-                    if (CACHED) {
-                        window.onload = () => {
-                            window.setTimeout(() => {
-                                const loader = document.querySelector('.preloader');
-                                loader.classList.add('hide');
-                            }, 1000);
-                        }
-                    }
-                });
-                return res.clone();
+        const flagged = !event.request.url.includes(`${LOAD_FLAG}=1`);
+        const requestFlagged = flagged ? new Request(`${event.request.url}?${LOAD_FLAG}=1`, event.request) : event.request;
+        return fetch(requestFlagged).then((res) => {
+            caches.open(CACHE_NAME).then((cache) => {
+                cache.put(requestFlagged, res);
+                if (res.status === 200 && flagged) {
+                    window.addEventListener('load', () => {
+                        setTimeout(() => {
+                            const loader = document.querySelector('.preloader');
+                            loader.classList.add('hide');
+                        }, 500);
+                    });
+                }
             });
-        }
-        return fetch(event.request);
+            return res.clone();
+        });
     }));
 });
