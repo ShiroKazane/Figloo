@@ -31,6 +31,7 @@ self.addEventListener('fetch', (event) => {
                 if (res.status === 200 && flagged) {
                     window.addEventListener('load', () => {
                         setTimeout(() => {
+                            console.log('NOT SURE');
                             const loader = document.querySelector('.preloader');
                             loader.classList.add('hide');
                         }, 500);

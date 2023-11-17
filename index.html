@@ -251,6 +251,7 @@
             if (!LOAD_FLAG) {
                 window.onload = () => {
                     window.setTimeout(() => {
+                        console.log('using LOAD_FLAG')
                         const loader = document.querySelector('.preloader');
                         loader.classList.add('hide');
                     }, 500);
