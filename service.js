@@ -34,6 +34,7 @@ self.addEventListener('fetch', (event) => {
                     cache.put(requestFlagged, res);
                     if (res.status === 200) {
                         CACHED = true;
+                        console.log('CACHED');
                     }
                     if (CACHED) {
                         window.onload(() => {
