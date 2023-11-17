@@ -197,6 +197,9 @@
                 background-position: 0px 12px, 145px 12px;
                 animation: earLift 3s linear infinite alternate;
             }
+            .hide {
+                display: none;
+            }
             @keyframes faceLift {
                 0% {
                     transform: translateX(-60%);
@@ -263,7 +266,10 @@
             const param = new URLSearchParams(window.location.search);
             const LOAD_FLAG = param.get('c');
             if (!LOAD_FLAG) {
-                document.querySelector('.preloader').style.display = 'none';
+                window.setTimeout(() => {
+                    const loader = document.querySelector('.preloader');
+                    loader.classList.add('hide');
+                }, 1000);
             }
             const linksSection = document.querySelector(".links");
             fetch("assets/data.json")

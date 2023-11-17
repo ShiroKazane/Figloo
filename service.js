@@ -37,7 +37,8 @@ self.addEventListener('fetch', (event) => {
                     }
                     if (CACHED) {
                         window.setTimeout(() => {
-                            document.querySelector('.preloader').style.display = 'none';
+                            const loader = document.querySelector('.preloader');
+                            loader.classList.add('hide');
                         }, 1000);
                     }
                 });
