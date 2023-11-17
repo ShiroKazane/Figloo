@@ -25,6 +25,7 @@ self.addEventListener('fetch', (event) => {
         }
         const flagged = !event.request.url.includes(`${LOAD_FLAG}=1`);
         const requestFlagged = flagged ? new Request(`${event.request.url}?${LOAD_FLAG}=1`, event.request) : event.request;
+        console.log(requestFlagged);
         return fetch(requestFlagged).then((res) => {
             caches.open(CACHE_NAME).then((cache) => {
                 cache.put(requestFlagged, res);
