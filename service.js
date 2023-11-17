@@ -1,7 +1,17 @@
 const CACHE_NAME = 'cache-v2';
+const URL = [
+    '/',
+    '/index.html',
+    '/service.js',
+    '/assets/data.json',
+    '/assets/favicon.ico'
+];
 
 self.addEventListener('install', (event) => {
     console.log('Service worker: Installed.');
+    event.waitUntil(caches.open(CACHE_NAME).then((cache) => {
+        return cache.addAll(URL);
+    }));
     self.skipWaiting();
 });
 
@@ -17,15 +27,16 @@ self.addEventListener('activate', (event) => {
             }));
         })
     );
+    self.clients.claim();
 });
 
 self.addEventListener('fetch', (event) => {
     console.log(`Service worker: Fetching: ${event.request.url}`);
-    event.respondWith(fetch(event.request)).then((res) => {
+    event.respondWith(fetch(event.request).then((res) => {
         const resClone = res.clone();
         caches.open(CACHE_NAME).then((cache) => {
             cache.put(event.request, resClone);
         });
         return res;
-    }).catch(() => caches.match(event.request).then((res) => res));
+    }).catch(() => caches.match(event.request).then((res) => res)));
 });
