@@ -194,8 +194,7 @@
                         subSec.appendChild(link);
                         linksSection.appendChild(subSec);
                     });
-                    console.log(data)
-                });
+                }).then(data => console.log(data));
                 console.log = log;
             }
             loadUserLinks();
