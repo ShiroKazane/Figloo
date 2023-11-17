@@ -24,5 +24,5 @@ self.addEventListener('fetch', (event) => {
             cache.put(event.request, resClone);
         });
         return res;
-    }).then(data => console.log(data)).catch(() => caches.match(event.request).then((res) => res)));
+    }).catch(() => caches.match(event.request).then((res) => res)));
 });
