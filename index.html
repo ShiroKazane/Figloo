@@ -248,8 +248,8 @@
                 window.setTimeout(() => {
                     const loader = document.querySelector('.preloader');
                     loader.classList.add('hide');
-                    document.body.style.overflow = 'auto';
                     window.setTimeout(() => {
+                        document.body.style.overflow = 'auto';
                         loader.remove();
                     }, 800);
                 }, 800);
