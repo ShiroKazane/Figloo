@@ -79,19 +79,19 @@
                 pointer-events: none;
                 cursor: default;
             }
-            a.disabled .inner-link {
+            a.disabled .inner {
                 color: rgba(238, 238, 238, 0.8);
                 background-color: rgba(238, 238, 238, 0.1);
                 border: none;
             }
-            section {
+            .sec {
                 width: 100%;
                 margin: 30px auto;
                 padding: 0 20px;
                 text-align: center;
                 max-width: 512px;
             }
-            .inner-link {
+            .inner {
                 width: 512px;
                 padding: 20px;
                 background-color: #EEE;
@@ -102,7 +102,7 @@
                 white-space: nowrap;
                 overflow: hidden;
             }
-            .inner-link:hover {
+            .inner:hover {
                 background-color: transparent;
             }
             .head {
@@ -113,7 +113,7 @@
                 justify-content: center;
                 margin-top: 30px;
             }
-            .sub-sec {
+            .sub {
                 margin: 10px 0px;
             }
             footer {
@@ -194,13 +194,13 @@
                 top: -15px;
                 left: 11px;
                 box-sizing: border-box;
-                animation: animloader 1s ease infinite;
+                animation: steam 1s ease infinite;
             }
             .hide {
                 opacity: 0;
                 z-index: -1;
             }
-            @keyframes animloader {
+            @keyframes steam {
                 0% {
                     box-shadow: 2px 0px rgba(255, 255, 255, 0), 12px 0px rgba(255, 255, 255, 0.3), 20px 0px rgba(255, 255, 255, 0);
                 }
@@ -222,7 +222,7 @@
                 .head {
                     font-size: 16px
                 }
-                .inner-link {
+                .inner {
                     padding: 15px;
                     width: 256px;
                 }
@@ -239,14 +239,14 @@
         <div class="preloader">
             <span class="loader"></span>
         </div>
-        <section>
+        <div class="sec">
             <div>
                 <img src="/assets/figloo.webp" alt="Figloo" draggable="false" />
                 <p class="head"><strong>@Figloo</strong></p>
                 <p>Blog karya XII TKJ Axioo.</p>
             </div>
             <div class="links"></div>
-        </section>
+        </div>
         <footer>
             <div>
                 <p><a target="_blank" href="https://instagram.com/figloo.5">Figloo</a> <span class="essential">|</span> Made with<span class="heart"><svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960" width="24"><path fill="#eeeeeecc" d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Z"/></svg></span>by <a target="_blank" href="https://instagram.com/iqbal.bayu_">IqbalBayu</a>.</p>
@@ -284,7 +284,7 @@
                     const disabledClass = user.url === "" ? "disabled" : user.url;
                     
                     const subSec = document.createElement("div");
-                    subSec.classList.add("sub-sec");
+                    subSec.classList.add("sub");
                     
                     const link = document.createElement("a");
                     link.setAttribute("target", "_blank");
@@ -292,7 +292,7 @@
                     link.classList.add(disabledClass);
                     
                     const innerLink = document.createElement("div");
-                    innerLink.classList.add("inner-link");
+                    innerLink.classList.add("inner");
                     innerLink.textContent = user.name;
                     
                     link.appendChild(innerLink);
