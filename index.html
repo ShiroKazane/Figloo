@@ -274,14 +274,31 @@
                 }
             }
             function run() {
-                const run = document.querySelector('.run').value;
+                const run = document.querySelector('.run').value.toLowerCase();
                 const nodes = getNodes(document.body);
                 nodes.forEach(node => {
                     const text = node.nodeValue.trim();
                     const parent = node.parentNode;
-                    if (text.includes(run)) {
-                        const highlight = text.replace(new RegExp(run, 'gi'), match => `<span class="highlight">${match}</span>`);
-                        parent.innerHTML = highlight;
+                    if (text.toLowerCase().includes(run)) {
+                        const fragment = document.createDocumentFragment();
+                        let pos = 0;
+                        while (pos < text.length) {
+                            const index = text.toLowerCase().indexOf(run, pos);
+                            if (index === -1) {
+                                fragment.appendChild(document.createTextNode(text.substring(pos)));
+                                break;
+                            }
+                            fragment.appendChild(document.createTextNode(text.substring(pos, index)));
+                            const span = document.createElement('span');
+                            span.classList.add('highlight');
+                            span.textContent = text.substring(index, index = run.length);
+                            fragment.appendChild(span);
+                            pos = index + run.length
+                        }
+                        while (parent.firstChild) {
+                            parent.removeChild(parent.firstChild);
+                        }
+                        parent.appendChild(fragment);
                     } else {
                         parent.innerHTML = text;
                     }
