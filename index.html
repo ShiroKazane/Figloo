@@ -247,6 +247,9 @@
                 window.setTimeout(() => {
                     const loader = document.querySelector('.preloader');
                     loader.classList.add('hide');
+                    window.setTimeout(() => {
+                        loader.remove();
+                    }, 800);
                 }, 800);
             }
             if (navigator.onLine) {
