@@ -262,7 +262,10 @@
                     }, 500);
                 }, 800);
             }
-            window.addEventListener('contextmenu', function(e) {e.stopPropagation();e.preventDefault();}, true);
+            window.addEventListener('contextmenu', (event) => {
+                event.stopPropagation();
+                event.preventDefault();
+            }, true);
             if (navigator.onLine) {
                 if ('serviceWorker' in navigator) {
                     navigator.serviceWorker.register('/service.js');
