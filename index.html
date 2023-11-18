@@ -155,10 +155,6 @@
                 transition: opacity .5s ease;
                 z-index: 1;
             }
-            .hide {
-                opacity: 0;
-                z-index: -1;
-            }
             .loader {
                 width: 48px;
                 height: 40px;
@@ -190,6 +186,13 @@
                 left: 11px;
                 box-sizing: border-box;
                 animation: animloader 1s ease infinite;
+            }
+            .hide {
+                opacity: 0;
+                z-index: -1;
+            }
+            .load {
+                overflow: auto;
             }
             @keyframes animloader {
                 0% {
@@ -226,7 +229,7 @@
             }
         </style>
     </head>
-    <body oncontextmenu="return false;">
+    <body oncontextmenu="return false">
         <div class="preloader">
             <span class="loader"></span>
         </div>
@@ -249,7 +252,7 @@
                     const loader = document.querySelector('.preloader');
                     loader.classList.add('hide');
                     window.setTimeout(() => {
-                        document.body.style.overflow = 'auto';
+                        document.body.classList.add('load');
                         loader.remove();
                     }, 200);
                 }, 800);
