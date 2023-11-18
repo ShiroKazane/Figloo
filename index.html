@@ -273,18 +273,20 @@
                     navigator.serviceWorker.register('/service.js');
                 }
             }
-            const run = document.querySelector('.run').value;
-            const nodes = getNodes(document.body);
-            nodes.forEach(node => {
-                const text = node.nodeValue.trim();
-                const parent = node.parentNode;
-                if (text.includes(run)) {
-                    const highlight = text.replace(new RegExp(run, 'gi'), match => `<span class="highlight">${match}</span>`);
-                    parent.innerHTML = highlight;
-                } else {
-                    parent.innerHTML = text;
-                }
-            })
+            function run() {
+                const run = document.querySelector('.run').value;
+                const nodes = getNodes(document.body);
+                nodes.forEach(node => {
+                    const text = node.nodeValue.trim();
+                    const parent = node.parentNode;
+                    if (text.includes(run)) {
+                        const highlight = text.replace(new RegExp(run, 'gi'), match => `<span class="highlight">${match}</span>`);
+                        parent.innerHTML = highlight;
+                    } else {
+                        parent.innerHTML = text;
+                    }
+                })
+            }
             function getNodes(element) {
                 const text = [];
                 const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
