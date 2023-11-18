@@ -254,9 +254,9 @@
                     window.setTimeout(() => {
                         const preloader = document.querySelector('.preloader');
                         preloader.classList.add('hide');
-                    }, 200);
-                    window.setTimeout(() => {
-                        loader.remove();
+                        window.setTimeout(() => {
+                            preloader.remove();
+                        }, 200);
                     }, 200);
                 }, 600);
             }
