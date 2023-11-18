@@ -229,7 +229,7 @@
             }
         </style>
     </head>
-    <body oncontextmenu="return false">
+    <body>
         <div class="preloader">
             <span class="loader"></span>
         </div>
@@ -257,6 +257,7 @@
                     }, 200);
                 }, 800);
             }
+            window.addEventListener('contextmenu', function(e) {e.stopPropagation();e.preventDefault();}, true);
             if (navigator.onLine) {
                 if ('serviceWorker' in navigator) {
                     navigator.serviceWorker.register('/service.js');
