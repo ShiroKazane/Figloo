@@ -189,15 +189,6 @@
                 box-sizing: border-box;
                 animation: animloader 1s ease infinite;
             }
-            .runner {
-                position: relative;
-                margin: 50px;
-            }
-            .run {
-                width: 100%;
-                padding: 10px;
-                font-size: 16px;
-            }
             .hide {
                 opacity: 0;
                 z-index: -1;
@@ -248,9 +239,6 @@
                 <p>Blog karya XII TKJ Axioo.</p>
             </div>
             <div class="links"></div>
-            <div class="runner">
-                <input type="text" class="run" oninput="run()" placeholder="Start typing...">
-            </div>
         </section>
         <footer>
             <div>
@@ -272,47 +260,6 @@
                 if ('serviceWorker' in navigator) {
                     navigator.serviceWorker.register('/service.js');
                 }
-            }
-            function run() {
-                const run = document.querySelector('.run').value.toLowerCase();
-                const nodes = getNodes(document.body);
-                nodes.forEach(node => {
-                    const text = node.nodeValue.trim();
-                    const parent = node.parentNode;
-                    if (text.toLowerCase().includes(run)) {
-                        const fragment = document.createDocumentFragment();
-                        let pos = 0;
-                        while (pos < text.length) {
-                            const index = text.toLowerCase().indexOf(run, pos);
-                            if (index === -1) {
-                                fragment.appendChild(document.createTextNode(text.substring(pos)));
-                                break;
-                            }
-                            fragment.appendChild(document.createTextNode(text.substring(pos, index)));
-                            const span = document.createElement('span');
-                            span.classList.add('highlight');
-                            span.textContent = text.substring(index, index = run.length);
-                            fragment.appendChild(span);
-                            pos = index + run.length
-                        }
-                        while (parent.firstChild) {
-                            parent.removeChild(parent.firstChild);
-                        }
-                        parent.appendChild(fragment);
-                    } else {
-                        if (node.nodeType === Node.TEXT_NODE) {
-                            parent.textContent = text;
-                        }
-                    }
-                })
-            }
-            function getNodes(element) {
-                const text = [];
-                const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
-                while (walker.nextNode()) {
-                    text.push(walker.currentNode);
-                }
-                return text;
             }
             const links = document.querySelector(".links");
             fetch("assets/data.json")
