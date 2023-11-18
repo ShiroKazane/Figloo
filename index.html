@@ -300,7 +300,9 @@
                         }
                         parent.appendChild(fragment);
                     } else {
-                        parent.innerHTML = text;
+                        if (node.nodeType === Node.TEXT_NODE) {
+                            parent.textContent = text;
+                        }
                     }
                 })
             }
