@@ -249,12 +249,16 @@
             window.onload = () => {
                 window.setTimeout(() => {
                     window.scrollTo(0, 0);
-                    const loader = document.querySelector('.preloader');
+                    const loader = document.querySelector('.loader');
                     loader.classList.add('hide');
+                    window.setTimeout(() => {
+                        const preloader = document.querySelector('.preloader');
+                        preloader.classList.add('hide');
+                    }, 200);
                     window.setTimeout(() => {
                         loader.remove();
                     }, 200);
-                }, 800);
+                }, 600);
             }
             window.addEventListener('contextmenu', function(e) {e.stopPropagation();e.preventDefault();}, true);
             if (navigator.onLine) {
