@@ -245,10 +245,10 @@
         <script defer>
             window.onload = () => {
                 window.setTimeout(() => {
-                    document.body.scrollTop = 0;
                     const loader = document.querySelector('.preloader');
                     loader.classList.add('hide');
                     window.setTimeout(() => {
+                        document.body.scrollTop = 0;
                         loader.remove();
                     }, 200);
                 }, 800);
