@@ -42,7 +42,6 @@
                 margin: 25px;
                 padding: 0;
                 font-size: 16px;
-                overflow: hidden;
                 text-overflow: ellipsis;
                 user-select: none;
                 -ms-overflow-style: none;
@@ -191,9 +190,6 @@
                 opacity: 0;
                 z-index: -1;
             }
-            .load {
-                overflow: auto;
-            }
             @keyframes animloader {
                 0% {
                     box-shadow: 2px 0px rgba(255, 255, 255, 0), 12px 0px rgba(255, 255, 255, 0.3), 20px 0px rgba(255, 255, 255, 0);
@@ -249,10 +245,10 @@
         <script defer>
             window.onload = () => {
                 window.setTimeout(() => {
+                    window.scrollIntoView()
                     const loader = document.querySelector('.preloader');
                     loader.classList.add('hide');
                     window.setTimeout(() => {
-                        document.body.classList.add('load');
                         loader.remove();
                     }, 200);
                 }, 800);
