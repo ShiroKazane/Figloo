@@ -165,6 +165,8 @@
                 position: relative;
                 background: #FFF;
                 border-radius: 15% 15% 35% 35%;
+                opacity: 1;
+                transition: opacity .5s ease;
                 z-index: 2;
             }
             .loader::after {
@@ -257,7 +259,7 @@
                         window.setTimeout(() => {
                             preloader.remove();
                         }, 200);
-                    }, 200);
+                    }, 400);
                 }, 600);
             }
             window.addEventListener('contextmenu', function(e) {e.stopPropagation();e.preventDefault();}, true);
