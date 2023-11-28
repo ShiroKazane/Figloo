@@ -117,6 +117,18 @@
                 margin-block-start: 1em;
                 margin-block-end: 1em;
             }
+            .main-links {
+                display: grid;
+                justify-content: center;
+                margin: 30px 0;
+            }
+            .divider {
+                content: '';
+                display: block;
+                width: 384px;
+                border-top: 1px solid rgba(238, 238, 238, 0.1);
+                margin: 0 auto;
+            }
             .links {
                 display: grid;
                 justify-content: center;
@@ -254,6 +266,8 @@
                 <a class="head" target="_blank" href="https://instagram.com/figloo.5"><strong>@Figloo</strong></a>
                 <p>Blog karya XII TKJ Axioo.</p>
             </div>
+            <div class="main-links"></div>
+            <div class="divider"></div>
             <div class="links"></div>
         </main>
         <footer>
@@ -285,6 +299,27 @@
                     navigator.serviceWorker.register('/service.js');
                 }
             }
+            const mainLink = document.querySelector(".main-links");
+            fetch("assets/url.json")
+            .then((response) => response.json())
+            .then((data) => {
+                data.forEach((data) => {
+                    const subSec = document.createElement("div");
+                    subSec.classList.add("sub");
+
+                    const link = document.createElement("a");
+                    link.setAttribute("target", "_blank");
+                    link.setAttribute("href", data.url);
+
+                    const innerLink = document.createElement("div");
+                    innerLink.classList.add("inner");
+                    innerLink.textContent = data.name;
+
+                    link.appendChild(innerLink);
+                    subSec.appendChild(link);
+                    mainLink.appendChild(subSec);
+                })
+            })
             const links = document.querySelector(".links");
             fetch("assets/data.json")
             .then((response) => response.json())
